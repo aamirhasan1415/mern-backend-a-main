@@ -12,21 +12,21 @@ app.use(express.json());
 const dbuser = encodeURIComponent(process.env.DBUSER);
 const dbpass = encodeURIComponent(process.env.DBPASS);
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/merncafe")
-  .then(() => {
-    app.listen(8080, () => {
-      console.log("Server started");
-    });
-  });
-
 // mongoose
-//   .connect(`mongodb+srv://${dbuser}:${dbpass}@cluster0.m75vdtm.mongodb.net/merncafe`)
+//   .connect("mongodb://127.0.0.1:27017/merncafe")
 //   .then(() => {
 //     app.listen(8080, () => {
 //       console.log("Server started");
 //     });
 //   });
+
+mongoose
+  .connect(`mongodb+srv://${dbuser}:${dbpass}@cluster0.m75vdtm.mongodb.net/merncafe`)
+  .then(() => {
+    app.listen(8080, () => {
+      console.log("Server started");
+    });
+  });
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter)
