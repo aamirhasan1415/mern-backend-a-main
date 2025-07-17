@@ -7,7 +7,9 @@ import orderRouter from "./routes/orderRoute.js";
 import cors from "cors";
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin:['https://mern-frontend-a-main.vercel.app']
+}));
 app.use(express.json());
 const dbuser = encodeURIComponent(process.env.DBUSER);
 const dbpass = encodeURIComponent(process.env.DBPASS);
